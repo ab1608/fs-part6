@@ -1,14 +1,13 @@
-import { useAnecdotes, useAnecdoteActions } from "./store";
 import AnecdoteForm from "./components/AnecdoteForm.jsx";
 import AnecdoteList from "./components/AnecdoteList.jsx";
+import Filter from "./components/Filter.jsx";
 
 const App = () => {
-  const anecdotes = useAnecdotes();
-  const { vote, add } = useAnecdoteActions();
 
   return (
     <div>
       <h2>Anecdotes</h2>
+      <Filter />
       <AnecdoteList />
       <AnecdoteForm />
     </div>
