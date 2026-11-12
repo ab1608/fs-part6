@@ -1,4 +1,4 @@
-import { useAnecdotes, useAnecdoteActions } from "../store.js";
+import { useAnecdotes, useAnecdoteActions } from '../store.js';
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes();

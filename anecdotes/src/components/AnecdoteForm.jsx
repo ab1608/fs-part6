@@ -1,11 +1,11 @@
-import { useAnecdoteActions } from "../store.js";
+import { useAnecdoteActions } from '../store.js';
 
 const AnecdoteForm = () => {
   const { add } = useAnecdoteActions();
 
   const addAnecdote = (e) => {
     e.preventDefault();
-    const content = e.target["newanec"].value;
+    const content = e.target['newanec'].value;
     add({ content });
     e.target.reset();
   };
