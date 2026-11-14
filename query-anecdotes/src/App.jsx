@@ -1,13 +1,18 @@
 import AnecdoteForm from './components/AnecdoteForm';
 import Notification from './components/Notification';
 import { useAnecdotes } from './hooks/useAnecdotes.js';
+import { useNotification } from './hooks/useNotification.js';
 
 const App = () => {
   const { anecdotes, isPending, isError, incrementVote } = useAnecdotes();
 
+  const { setNotification } = useNotification();
+
   const handleVote = (anecdote) => {
     console.log('voting');
     incrementVote(anecdote);
+    setNotification(`'anecdote ${anecdote}' voted`);
+    setTimeout(() => setNotification(null), 5000);
   };
 
   if (isPending) {

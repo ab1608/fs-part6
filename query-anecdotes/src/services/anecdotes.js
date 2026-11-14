@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3001/anecdotes';
 
-const getAll = async () => {
+export const getAll = async () => {
   const response = await fetch(baseUrl);
 
   if (!response.ok) {
@@ -10,7 +10,7 @@ const getAll = async () => {
   return await response.json();
 };
 
-const createNewAnecdote = async (newAnecdote) => {
+export const createNewAnecdote = async (newAnecdote) => {
   const res = await fetch(baseUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -24,7 +24,7 @@ const createNewAnecdote = async (newAnecdote) => {
   return await res.json();
 };
 
-const incrementVote = async (anecdote) => {
+export const incrementVote = async (anecdote) => {
   const res = await fetch(`${baseUrl}/${anecdote.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -38,7 +38,7 @@ const incrementVote = async (anecdote) => {
   return await res.json();
 };
 
-const remove = async (anecdote) => {
+export const remove = async (anecdote) => {
   const res = await fetch(`${baseUrl}/${anecdote.id}`, {
     method: 'DELETE',
   });
@@ -47,5 +47,3 @@ const remove = async (anecdote) => {
     throw new Error(`Failed to delete: ${res.status}`);
   }
 };
-
-export default { getAll, createNewAnecdote, incrementVote, remove };
