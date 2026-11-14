@@ -1,23 +1,13 @@
 import { useAnecdotes } from '../hooks/useAnecdotes.js';
-import { useNotification } from '../hooks/useNotification.js';
 
 const AnecdoteForm = () => {
   const { addAnecdote } = useAnecdotes();
 
-  const { setNotification } = useNotification();
-
-  const addAnecdotes = async (event) => {
+  const addAnecdotes = (event) => {
     event.preventDefault();
     const content = event.target.anecdote.value;
     event.target.reset();
-    try {
-      addAnecdote(content);
-    } catch {
-      setNotification('too short anecdote, must have length 5 or more');
-      setTimeout(() => setNotification(null), 5000);
-    }
-    setNotification(`created ${content}`);
-    setTimeout(() => setNotification(null), 5000);
+    addAnecdote(content);
   };
 
   return (
